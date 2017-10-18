@@ -1,73 +1,90 @@
 <?php
+if(isset($_POST['email'])) {
 
-/**
- * configure here
- */
-$from = 'amit.7.srivastava@gmail.com';
-$sendTo = 'amit.7.srivastava@gmail.com';
-$subject = 'New message from contact form';
-$fields = array('name' => 'Name', 'surname' => 'Surname', 'phone' => 'Phone', 'email' => 'Email', 'message' => 'Message');
-$htmlHeader = '';
-$htmlFooter = '';
-$okMessage = 'Contact form succesfully submitted. Thank you, I will get back to you soon!';
+    // EDIT THE 2 LINES BELOW AS REQUIRED
+    $email_to = "amit.7.srivastava@yourdomain.com";
+    $email_subject = "Portfolio Email";
 
-$htmlContent = '<h1>New message from contact form</h1>';
-
-/* DO NOT EDIT BELOW */
-
-/* use classes */
-
-use Nette\Mail\Message,
-    Nette\Mail\SendmailMailer;
-
-/* require framework */
-
-require 'php/Nette/nette.phar';
-
-/* configure neccessary */
-
-$configurator = new Nette\Configurator;
-$configurator->setTempDirectory(__DIR__ . '/php/temp');
-$container = $configurator->createContainer();
-
-/* get post */
-
-$httpRequest = $container->getService('httpRequest');
-$httpResponse = $container->getService('httpResponse');
-
-$post = $httpRequest->getPost();
-
-if ($httpRequest->isAjax()) {
-    /* compose htmlContent */
-
-    $htmlContent .= '<table>';
-    foreach ($post as $key => $value) {
-
-	if (isset($fields[$key])) {
-	    $htmlContent .= "<tr><th>$fields[$key]</th><td>$value</td></tr>";
-	}
+    function died($error) {
+        // your error code can go here
+        echo "We are very sorry, but there were error(s) found with the form you submitted. ";
+        echo "These errors appear below.<br /><br />";
+        echo $error."<br /><br />";
+        echo "Please go back and fix these errors.<br /><br />";
+        die();
     }
-    $htmlContent .= '</table>';
-
-    /* compose html body */
-
-    $htmlBody = $htmlHeader . $htmlContent . $htmlFooter;
-
-    /* send email */
-
-    $mail = new Message;
-    $mail->setFrom($from)
-	    ->addTo($sendTo)
-	    ->setSubject($subject)
-	    ->setHtmlBody($htmlBody, FALSE);
-
-    $mailer = new SendmailMailer;
-    $mailer->send($mail);
 
 
-    $responseArray = array('type' => 'success', 'message' => $okMessage);
+    // validation expected data exists
+    if(!isset($_POST['first_name']) ||
+        !isset($_POST['last_name']) ||
+        !isset($_POST['email']) ||
+        !isset($_POST['telephone']) ||
+        !isset($_POST['comments'])) {
+        died('We are sorry, but there appears to be a problem with the form you submitted.');
+    }
 
-    $httpResponse->setCode(200);
-    $response = new \Nette\Application\Responses\JsonResponse($responseArray);
-    $response->send($httpRequest, $httpResponse);
+
+
+    $first_name = $_POST['first_name']; // required
+    $last_name = $_POST['last_name']; // required
+    $email_from = $_POST['email']; // required
+    $telephone = $_POST['telephone']; // not required
+    $comments = $_POST['comments']; // required
+
+    $error_message = "";
+    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+
+  if(!preg_match($email_exp,$email_from)) {
+    $error_message .= 'The Email Address you entered does not appear to be valid.<br />';
+  }
+
+    $string_exp = "/^[A-Za-z .'-]+$/";
+
+  if(!preg_match($string_exp,$first_name)) {
+    $error_message .= 'The First Name you entered does not appear to be valid.<br />';
+  }
+
+  if(!preg_match($string_exp,$last_name)) {
+    $error_message .= 'The Last Name you entered does not appear to be valid.<br />';
+  }
+
+  if(strlen($comments) < 2) {
+    $error_message .= 'The Comments you entered do not appear to be valid.<br />';
+  }
+
+  if(strlen($error_message) > 0) {
+    died($error_message);
+  }
+
+    $email_message = "Form details below.\n\n";
+
+
+    function clean_string($string) {
+      $bad = array("content-type","bcc:","to:","cc:","href");
+      return str_replace($bad,"",$string);
+    }
+
+
+
+    $email_message .= "First Name: ".clean_string($first_name)."\n";
+    $email_message .= "Last Name: ".clean_string($last_name)."\n";
+    $email_message .= "Email: ".clean_string($email_from)."\n";
+    $email_message .= "Telephone: ".clean_string($telephone)."\n";
+    $email_message .= "Comments: ".clean_string($comments)."\n";
+
+// create email headers
+$headers = 'From: '.$email_from."\r\n".
+'Reply-To: '.$email_from."\r\n" .
+'X-Mailer: PHP/' . phpversion();
+@mail($email_to, $email_subject, $email_message, $headers);
+?>
+
+<!-- include your own success html here -->
+
+Thank you for reaching out. I will be in touch with you very soon.
+
+<?php
+
 }
+?>
