@@ -3,8 +3,8 @@
 /**
  * configure here
  */
-$from = 'IT WORKER <it@domain.com>';
-$sendTo = 'IT WORKER <it@domain.com>';
+$from = 'amit.7.srivastava@gmail.com';
+$sendTo = 'amit.7.srivastava@gmail.com';
 $subject = 'New message from contact form';
 $fields = array('name' => 'Name', 'surname' => 'Surname', 'phone' => 'Phone', 'email' => 'Email', 'message' => 'Message');
 $htmlHeader = '';
@@ -71,7 +71,3 @@ if ($httpRequest->isAjax()) {
     $response = new \Nette\Application\Responses\JsonResponse($responseArray);
     $response->send($httpRequest, $httpResponse);
 }
-
-
-
-

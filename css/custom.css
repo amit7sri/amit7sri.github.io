@@ -35,7 +35,7 @@
   font-weight: 500;
 }
 #workex a {
-  color: #2196F3;
+  color: #4fbfa8;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -111,7 +111,7 @@
   font-weight: normal;
 }
 #workex .header {
-  background: #2196F3;
+  background: #4fbfa8;
   color: #fff;
 }
 #workex .header a {
@@ -238,7 +238,7 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  background: #2196F3;
+  background: #4fbfa8;
 }
 #workex .page-nav-wrapper a {
   color: rgba(255, 255, 255, 0.6);
@@ -307,7 +307,7 @@
   text-align: center;
 }
 #workex .timeline {
-  border-left: 3px solid #2196F3;
+  border-left: 3px solid #4fbfa8;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   position: relative;
@@ -339,7 +339,7 @@
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   background: #fff;
-  border: 3px solid #2196F3;
+  border: 3px solid #4fbfa8;
 }
 #workex .timeline .item:after {
   content: "";
@@ -357,7 +357,7 @@
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: #2196F3;
+  background: #4fbfa8;
   z-index: 10;
 }
 #workex .timeline .work-place {
@@ -386,7 +386,7 @@
 }
 #workex .timeline .job-meta .title {
   font-size: 18px;
-  color: #2196F3;
+  color: #4fbfa8;
 }
 #workex .timeline .job-meta .time {
   color: #8a8a8a;
@@ -402,7 +402,7 @@
 }
 #workex .education-section .degree {
   font-size: 18px;
-  color: #2196F3;
+  color: #4fbfa8;
   margin-top: 0;
   margin-bottom: 0px;
 }
@@ -502,7 +502,7 @@
   width: 36px;
   height: 36px;
   display: inline-block;
-  background: #2196F3;
+  background: #4fbfa8;
   color: #fff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -529,7 +529,7 @@
   margin-right: 5px;
 }
 #workex .testimonials-section .carousel-indicators li.active {
-  background-color: #2196F3;
+  background-color: #4fbfa8;
   width: 10px;
   height: 10px;
   margin: 0;
@@ -557,14 +557,14 @@
   margin-right: 0;
 }
 #workex .portfolio-section .filters .type.active {
-  color: #2196F3;
-  border-bottom: 2px solid #2196F3;
+  color: #4fbfa8;
+  border-bottom: 2px solid #4fbfa8;
 }
 #workex .portfolio-section .item {
   margin-bottom: 30px;
 }
 #workex .portfolio-section .item-inner {
-  background: #2196F3;
+  background: #4fbfa8;
   color: #fff;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -641,7 +641,7 @@
   margin-bottom: 15px;
 }
 #workex .contact-section .service-list .fa {
-  color: #2196F3;
+  color: #4fbfa8;
 }
 #workex .contact-section .social {
   margin-bottom: 0;
@@ -659,7 +659,7 @@
   color: #8a8a8a;
 }
 #workex .contact-section .social a:hover {
-  color: #2196F3;
+  color: #4fbfa8;
 }
 #workex .footer .container {
   padding: 30px;
@@ -903,7 +903,7 @@
   background-color: #3F51B5;
 }
 #workex .config-panel #color-options li.theme-14 a {
-  background-color: #2196F3;
+  background-color: #4fbfa8;
 }
 #workex .config-panel #color-options li.theme-15 a {
   background-color: #9C27B0;
